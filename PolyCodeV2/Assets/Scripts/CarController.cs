@@ -5,15 +5,18 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     public float moveSpeed;
-    public float HizLimiti;
+    public float maxSpeed;
     bool movingLeft = true;
     bool firstInput = true;
 
     bool gameOver = false;
 
+    public Rigidbody rb;
+    public int jumpForce = 5;
+    //public float distanceToCheck = 0.5f;
+    bool isGrounded;
 
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +26,10 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if(GameManager.instance.gamestarted)
         {
              Move();
              checkInput();
-
         }
 
         if(transform.position.y <= -2)
@@ -49,11 +50,10 @@ public class CarController : MonoBehaviour
     {
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
 
-        if(moveSpeed < HizLimiti)
+        if(moveSpeed < maxSpeed)
         {
-            moveSpeed += 0.3f * Time.deltaTime;
+            moveSpeed += 0.1f * Time.deltaTime;
         }
-
     }
 
     void changeDirection()
@@ -70,6 +70,11 @@ public class CarController : MonoBehaviour
 
     }
 
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
     void checkInput()
     {
         // ilk tiklama ile yon degistirmeye baslamamasi icin, ilk tiklamayi ignoreluyoruz. Cunku ilk tiklamada menu bolumunden oyuna gececegiz.
@@ -83,14 +88,32 @@ public class CarController : MonoBehaviour
         {
             changeDirection();
         }
+        //jumping
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            isGrounded = false;
+            Jump();
+        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isGrounded = true;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Star")
         {
-            GameManager.instance.SkoruArttir();
+            GameManager.instance.SkoruArttir(true);
+            other.gameObject.SetActive(false);
+        }
+        if (other.gameObject.tag == "Cuboid")
+        {
+            GameManager.instance.SkoruArttir(false);
             other.gameObject.SetActive(false);
         }
     }

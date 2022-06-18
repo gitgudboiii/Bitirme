@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Text text4;
     AudioSource music;
     public AudioClip[] Music;
+    public GameObject Button;
 
     int score = 0;
     int highestScore;
@@ -30,8 +31,6 @@ public class GameManager : MonoBehaviour
         music = GetComponent<AudioSource>();
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +38,6 @@ public class GameManager : MonoBehaviour
         text4.text = "YOUR HIGHEST SCORE : " + highestScore;
 
         CheckAdCount();
-
-
     }
 
     // Update is called once per frame
@@ -55,23 +52,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-
     public void GameStart()
     {
         gamestarted = true;
         PlatformSpawner.SetActive(true);
         AnaMenu.SetActive(false);
         SkorUI.SetActive(true);
+        Button.SetActive(false);
 
         //muzik oynatma
         music.clip = Music[1];
         music.Play();
 
-
-        StartCoroutine("UpdateScore");
-         
+        StartCoroutine("UpdateScore");    
     }
 
     public void GameOver()
@@ -84,32 +77,23 @@ public class GameManager : MonoBehaviour
 
        //AdsManager.instance.ShowAd();
         
-
         if(adCounter >= 3)
         {
             adCounter = 0;
             PlayerPrefs.SetInt("AdCount", 0);
 
             AdsManager.instance.ShowRewardedAd();
-
         }
         else
         {
             Invoke("LevelReload", 1f);
         }
         //Invoke("LevelReload", 1f);
-
-
-
-
-
     }
 
     public void LevelReload()
     { 
         SceneManager.LoadScene("GamePlatform");
-
-
     }
 
     void HighestScore()
@@ -130,10 +114,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SkoruArttir()
+    public void SkoruArttir(bool star)
     {
-        score += 10;
-        
+        if (star)
+        {
+            score += 10;
+        }
+        else
+        {
+            score -= 10;
+        }
 
         music.PlayOneShot(Music[2], 0.4f);
     }
