@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4731880814807449036
 Transform:
   m_ObjectHideFlags: 0
@@ -641,9 +641,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5395545636158646134}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.48, z: -0.21}
-  m_LocalScale: {x: 0.23, y: 0.23, z: 0.15}
+  m_LocalScale: {x: 0.23, y: 0.23, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9220163917307154461}
@@ -695,8 +695,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   maxSpeed: 15
+  Music: {fileID: 8300000, guid: 42f9978a41d65b543afbf8eb31e64745, type: 3}
   rb: {fileID: 381315632456516565}
-  jumpForce: 2200
+  jumpForce: 2000
 --- !u!1 &5482572280117259596
 GameObject:
   m_ObjectHideFlags: 0

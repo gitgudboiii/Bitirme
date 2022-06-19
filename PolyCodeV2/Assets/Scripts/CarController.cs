@@ -8,6 +8,8 @@ public class CarController : MonoBehaviour
     public float maxSpeed;
     bool movingLeft = true;
     bool firstInput = true;
+    AudioSource music;
+    public AudioClip Music;
 
     bool gameOver = false;
 
@@ -16,11 +18,10 @@ public class CarController : MonoBehaviour
     //public float distanceToCheck = 0.5f;
     bool isGrounded;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        music = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,8 +43,6 @@ public class CarController : MonoBehaviour
             }
     
         }
-
-
     }
 
     public void Move()
@@ -73,6 +72,7 @@ public class CarController : MonoBehaviour
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        music.PlayOneShot(Music, 0.4f);
     }
 
     void checkInput()

@@ -129,3 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Star: {fileID: 1958183219796243448, guid: 6fee40a121265784ebbcd54a907888b2, type: 3}
   Cuboid: {fileID: 1000013105924406, guid: 6a7274aefcc6cef4fbbfba924cc7f657, type: 3}
+  Decorations:
+  - {fileID: 7759477460801956180, guid: 10c9c5bf5053a1b41918cb1ccec3295b, type: 3}
+  - {fileID: 406816630829024947, guid: c06f6df73962cd94e8e62357e281163f, type: 3}
+  - {fileID: 2856447774700410115, guid: 1b50db4cd612a254598d8a583f28013e, type: 3}

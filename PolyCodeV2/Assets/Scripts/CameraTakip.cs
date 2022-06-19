@@ -6,34 +6,33 @@ public class CameraTakip : MonoBehaviour
 {
 
 
-    public Transform targets;
+    public Transform target;
     Vector3 distance;
     public float sValue;
+    //public CarSellector sellector;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        distance = targets.position - transform.position;
+        distance = target.position - transform.position;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(targets.position.y  >=0)
+        if(target.position.y  >=0)
         {
             Takip();
         }
-        
     }
-
 
     void Takip()
     {
         Vector3 currentPos = transform.position;
 
-        Vector3 targetPos = targets.position - distance;
+        Vector3 targetPos = target.position - distance;
 
         transform.position = Vector3.Lerp(currentPos, targetPos, sValue * Time.deltaTime);
     }

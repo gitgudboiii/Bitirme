@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     public Text text4;
     AudioSource music;
     public AudioClip[] Music;
-    public GameObject Button;
+
+    public Button Button;
+    public GameObject button;
+    public GameObject buttonStart;
 
     int score = 0;
     int highestScore;
@@ -27,9 +30,12 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
         music = GetComponent<AudioSource>();
+        Button = button.GetComponent<Button>();
+        
     }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +49,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (!gamestarted)
         {
-            if(Input.GetMouseButtonDown(0))
+            
+            if (buttonStart.)
+            {
+                LoadScene();
+            }
+            
+            if (Button.buttonPressed) //Input.GetMouseButtonDown(0)
             {
                 GameStart();
             }
         }
+        */
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene("SelectCar");
     }
 
     public void GameStart()
@@ -58,7 +77,7 @@ public class GameManager : MonoBehaviour
         PlatformSpawner.SetActive(true);
         AnaMenu.SetActive(false);
         SkorUI.SetActive(true);
-        Button.SetActive(false);
+        button.SetActive(false);
 
         //muzik oynatma
         music.clip = Music[1];
@@ -119,13 +138,15 @@ public class GameManager : MonoBehaviour
         if (star)
         {
             score += 10;
+            music.PlayOneShot(Music[2], 0.4f);
         }
         else
         {
             score -= 10;
+            music.PlayOneShot(Music[3], 0.4f);
         }
 
-        music.PlayOneShot(Music[2], 0.4f);
+        
     }
 
 

@@ -403,7 +403,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 819863630, guid: 50477af197889084e8a6d97f2b73b73b, type: 3}
+    - {fileID: 819863629, guid: 50477af197889084e8a6d97f2b73b73b, type: 3}
+    - {fileID: 819863628, guid: 50477af197889084e8a6d97f2b73b73b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 50477af197889084e8a6d97f2b73b73b, type: 3}
 --- !u!1 &506207207
 GameObject:
@@ -466,11 +469,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be1daaa0f27fc74f8e920c7bff6f75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCarIndex: 2
+  CurrentCarIndex: 0
   carModels:
   - {fileID: 669353711}
   - {fileID: 517351737}
   - {fileID: 1989566825}
+  cam: {fileID: 926903334}
 --- !u!1 &517351737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1646981259178978, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
@@ -795,7 +799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 974798494, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
+    - {fileID: 974798492, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
+    - {fileID: 974798493, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
 --- !u!1 &757446661
 GameObject:
