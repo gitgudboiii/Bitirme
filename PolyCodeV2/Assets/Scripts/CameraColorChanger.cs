@@ -22,7 +22,7 @@ public class CameraColorChanger : MonoBehaviour
     {
         while(true)
         {
-            int randomcolor = Random.Range(0, 5);
+            int randomcolor = Random.Range(0, colors.Length);
 
             Camera.main.backgroundColor = colors[randomcolor];
 
